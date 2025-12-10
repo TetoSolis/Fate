@@ -69,6 +69,17 @@ interface Vlan300
  standby 99 priority 110
  standby 99 preempt
 !
+exit
+!
+router ospf 10
+ redistribute connected subnets
+ network 10.1.10.0 0.0.0.63 area 0
+ network 10.1.20.0 0.0.1.255 area 0
+ network 217.1.160.0 0.0.0.15 area 0
+ network 10.1.99.0 0.0.0.255 area 0
+ network 10.1.254.16 0.0.0.15 area 0
+ network 10.1.254.8 0.0.0.3 area 0
+!
 ip route 0.0.0.0 0.0.0.0 10.1.254.9
 
 username admin privilege 15 secret P@ssw0rd

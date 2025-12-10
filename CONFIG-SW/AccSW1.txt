@@ -1,4 +1,4 @@
-hostname AccSW1
+thostname AccSW1
 !
 interface FastEthernet0
  no ip address
@@ -26,6 +26,7 @@ interface Vlan1
 interface Vlan99
  ip address 10.1.99.251 255.255.255.0
 !
+exit
 line vty 0 4
  login local
  transport input ssh
