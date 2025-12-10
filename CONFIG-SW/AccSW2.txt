@@ -1,0 +1,26 @@
+hostname AccSW2
+
+!
+interface GigabitEthernet2/0/47
+ switchport trunk native vlan 666
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+!
+interface GigabitEthernet2/0/48
+ switchport trunk native vlan 666
+ switchport trunk allowed vlan 10,20,30,99
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan99
+ ip address 10.1.99.250 255.255.255.0
+!
+!
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
