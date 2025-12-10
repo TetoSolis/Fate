@@ -12,6 +12,8 @@ int range GigabitEthernet1/0/4-24
 sh
 switchport mode access
 switchport access vlan 666
+interface Vlan99
+ ip address 10.1.99.249 255.255.255.0
 exit
 username admin privilege 15 secret P@ssw0rd
 line vty 0 4
