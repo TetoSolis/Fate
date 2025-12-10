@@ -72,6 +72,7 @@ interface Vlan300
 exit
 !
 router ospf 10
+ redistribute connected subnets
  network 10.1.10.0 0.0.0.63 area 0
  network 10.1.20.0 0.0.1.255 area 0
  network 217.1.160.0 0.0.0.15 area 0
