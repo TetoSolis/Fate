@@ -60,6 +60,7 @@ interface Vlan200
 interface Vlan300
  ip address 10.1.254.17 255.255.255.252
 !
+exit
 ip route 0.0.0.0 0.0.0.0 10.5.254.13
 !
 username admin privilege 15 secret P@ssw0rd
