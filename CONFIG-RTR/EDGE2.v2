@@ -6,28 +6,33 @@ interface FastEthernet0/0/0.30
  ip address 217.1.160.4 255.255.255.240
  ip nat inside
  ip virtual-reassembly in
+ no sh
 !
 interface FastEthernet0/0/0.200
  encapsulation dot1Q 200
  ip address 10.1.254.13 255.255.255.252
  ip nat inside
  ip virtual-reassembly in
+ no sh
 !
 interface FastEthernet0/0/0.300
  encapsulation dot1Q 300
  ip address 10.1.254.18 255.255.255.252
  ip nat inside
  ip virtual-reassembly in
+ no sh
 !
 interface FastEthernet0/1/0.15
  encapsulation dot1Q 15
  ip address 10.1.254.2 255.255.255.252
+ no sh
 !
 interface FastEthernet0/1/0.16
  encapsulation dot1Q 16
  ip address 31.1.126.14 255.255.255.252
  ip nat outside
  ip virtual-reassembly in
+ no sh
 !
 router ospf 10
  redistribute connected subnets
