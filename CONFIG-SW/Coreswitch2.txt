@@ -36,7 +36,7 @@ interface FastEthernet1/0/24
 !
 interface Vlan10
  ip address 10.1.10.60 255.255.255.192
- standby 10 ip 10.1.10.1
+ standby 10 ip 10.1.10.62
  standby 10 preempt
 !
 interface Vlan20
@@ -51,7 +51,7 @@ interface Vlan30
 !
 interface Vlan99
  ip address 10.1.99.252 255.255.255.0
- standby 99 ip 10.1.99.1
+ standby 99 ip 10.1.99.254
  standby 99 preempt
 !
 interface Vlan200
