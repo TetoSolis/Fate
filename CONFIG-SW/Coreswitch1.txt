@@ -69,6 +69,7 @@ interface Vlan300
  standby 99 priority 110
  standby 99 preempt
 !
+exit
 ip route 0.0.0.0 0.0.0.0 10.1.254.9
 
 username admin privilege 15 secret P@ssw0rd
