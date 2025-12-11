@@ -1,0 +1,139 @@
+hostname EDGE2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+no ipv6 cef
+ip source-route
+ip cef
+!
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+crypto pki token default removal timeout 0
+!
+!
+license udi pid CISCO1941/K9 sn FCZ1634900B
+!
+!
+username admin privilege 15 password 0 P@ssw0rd
+!
+redundancy
+!
+!
+!
+!
+!
+!
+interface Embedded-Service-Engine0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/0/0.30
+ encapsulation dot1Q 30
+ ip address 217.1.160.4 255.255.255.240
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface FastEthernet0/0/0.200
+ encapsulation dot1Q 200
+ ip address 10.1.254.13 255.255.255.252
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface FastEthernet0/0/0.300
+ encapsulation dot1Q 300
+ ip address 10.1.254.18 255.255.255.252
+ ip nat inside
+ ip virtual-reassembly in
+ standby version 2 
+ standby 10 ip 10.1.254.21
+ standby 10 priority 100
+ standby 10 preempt
+!
+interface FastEthernet0/1/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1/0.15
+ encapsulation dot1Q 15
+ ip address 10.1.254.2 255.255.255.252
+!
+interface FastEthernet0/1/0.16
+ encapsulation dot1Q 16
+ ip address 31.1.126.14 255.255.255.252
+ ip nat outside
+ ip virtual-reassembly in
+!
+router ospf 10
+ redistribute connected subnets
+ network 10.1.254.0 0.0.0.3 area 0
+ network 10.1.254.4 0.0.0.3 area 0
+ network 10.1.254.12 0.0.0.3 area 0
+!
+router bgp 65002
+ bgp router-id 1.1.1.3
+ bgp log-neighbor-changes
+ neighbor 31.1.126.13 remote-as 65000
+ !
+ address-family ipv4
+  redistribute connected
+  neighbor 31.1.126.13 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+line con 0
+line aux 0
+line 2
+ no activation-character
+ no exec
+ transport preferred none
+ transport input all
+ transport output lat pad telnet rlogin lapb-ta mop udptn v120 ssh
+ stopbits 1
+line vty 0 4
+ login
+ transport input ssh
+!
+scheduler allocate 20000 1000
+end
